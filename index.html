@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Monero Donate</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <main>
+        <img src="img/monero-logo.png" class="logo">
+        <section id="generate">
+            <h3>Generate Monero Donate Link</h3>
+            <p>Address</p>
+            <input id="address" oninput="generate()" size="95" autofocus maxlength="95" type="text" placeholder="4.. / 8.. / OpenAlias">
+            <div class="result">
+                <div class="result__text">
+                    <p>Result</p>
+                    <textarea id="result" cols="60" rows="10"></textarea>
+                </div>
+                <div id="html" class="html"></div>
+            </div>
+        </section>
+        <section id="view">
+            <h3>Monero Donate Address</h3>
+            <div id="qrcode"></div>
+            <p>Address</p>
+            <p id="send"></p>
+        </section>
+    </main>
+    <script src="js/qrcode.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
