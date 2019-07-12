@@ -54,3 +54,8 @@ input, textarea {
     align-items: center;
     justify-content: center;
 }
+
+.bottom {
+    color: #7a7a7a;
+    text-align: center;
+}
