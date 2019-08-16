@@ -2,6 +2,7 @@ let urlParams = new URLSearchParams(window.location.search);
 if (urlParams.get('address') !== null) {
     document.getElementById("view").style.display = 'flex';
     document.getElementById("send").innerHTML = urlParams.get('address');
+    document.getElementById("app").href = "monero:" + urlParams.get('address');
     new QRCode(document.getElementById("qrcode"), urlParams.get('address'));
 } else {
     document.getElementById("generate").style.display = 'flex';

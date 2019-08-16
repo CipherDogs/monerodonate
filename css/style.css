@@ -29,6 +29,20 @@ input, textarea {
     resize: none;
 }
 
+a, a:visited, a:active, a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+a {
+    background-color: #ce5e14;
+    text-align: center;
+    font-weight: bold;
+    padding: 12px;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+}
+
 .logo {
     width: 380px;
 }
