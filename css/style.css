@@ -34,15 +34,6 @@ a, a:visited, a:active, a:hover {
     color: white;
 }
 
-a {
-    background-color: #ce5e14;
-    text-align: center;
-    font-weight: bold;
-    padding: 12px;
-    font-size: 0.875rem;
-    text-transform: uppercase;
-}
-
 .logo {
     width: 380px;
 }
@@ -73,4 +64,13 @@ a {
 .bottom {
     color: #7a7a7a;
     text-align: center;
+}
+
+#app {
+    background-color: #ce5e14;
+    text-align: center;
+    font-weight: bold;
+    padding: 12px;
+    font-size: 0.875rem;
+    text-transform: uppercase;
 }
