@@ -1,3 +1,9 @@
+@media screen and (max-width: 930px) {
+    .view-addr {
+        display: none;
+    }
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
     background-color: #edeef0;
@@ -74,4 +80,10 @@ a, a:visited, a:active, a:hover {
     font-size: 0.875rem;
     text-transform: uppercase;
     color: white;
+    margin-top: 30px;
+}
+
+.view-addr {
+    text-align: center;
+    margin-top: 30px;
 }
