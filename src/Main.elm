@@ -78,7 +78,7 @@ update msg model =
         SetAddress address ->
             ( { model
                 | html =
-                    "<a href='"
+                    "<a target='_blank' href='"
                         ++ model.link
                         ++ address
                         ++ "'><img height='100' width='100' src='https://donate.cipherdogs.net/img/monero.png'></a>"
@@ -149,7 +149,7 @@ viewQRcode address =
             [ text "Address"
             , div [] [ text address ]
             ]
-        , a [ class "button", href "#" ] [ text "Donate" ]
+        , a [ class "button", href ("monero:" ++ address), target "_blank" ] [ text "Donate" ]
         ]
 
 
@@ -166,7 +166,7 @@ view model =
                 viewQRcode model.address
             , p [ class "footer" ]
                 [ text "Add to your site a link to donate Monero"
-                , a [ href (model.link ++ model.donate) ] [ text "Donate" ]
+                , a [ href (model.link ++ model.donate), target "_blank"] [ text "Donate" ]
                 ]
             ]
         ]
