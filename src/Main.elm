@@ -166,7 +166,7 @@ view model =
                 viewQRcode model.address
             , p [ class "footer" ]
                 [ text "Add to your site a link to donate Monero"
-                , a [ href (model.link ++ model.donate), target "_blank"] [ text "Donate" ]
+                , a [ href (model.link ++ model.donate), target "_blank" ] [ text "Donate" ]
                 ]
             ]
         ]
