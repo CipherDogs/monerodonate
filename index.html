@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -8,40 +8,14 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="shortcut icon" href="img/monero.png" type="image/png">
     <meta name="description" content="Generate Monero Donate Link" />
-</head>
-<body>
-    <main>
-        <img src="img/monero-logo.png" class="logo">
-        <section id="generate">
-            <h3>Generate Monero Donate Link</h3>
-            <p>Address</p>
-            <input id="address" oninput="generate()" autofocus maxlength="95" type="text" placeholder="4.. / 8.. / OpenAlias">
-            <div class="result">
-                <div class="result__text">
-                    <p>Result</p>
-                    <textarea id="result"></textarea>
-                </div>
-                <div class="html">
-                    <p>Preview</p>
-                    <div id="html"></div>
-                </div>
-            </div>
-        </section>
-        <section id="view">
-            <h3>Monero Donate Address</h3>
-            <div id="qrcode"></div>
-            <div class="view-addr">
-                Address:<br>
-                <div id="send"></div>
-            </div>
-            <a id="app" href="">Donate</a>
-        </section>
-        <p class="bottom">
-            Add to your site a link to donate Monero<br>
-            <a href="https://donate.cipherdogs.net/?address=4A5cX5VRHSmitG2fyZZqJu1hTFR53aKpPD9GjnBi6D3p5qVNA8c3gFxB7Q8E1aJQiHNt2EBjjviUTMNWmX4f4V8RSE3JX9f">Donate</a>
-        </p>
-    </main>
-    <script src="js/qrcode.min.js"></script>
-    <script src="js/main.js"></script>
-</body>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script src="elm.min.js"></script>
+    <script>
+      var app = Elm.Main.init({
+          node: document.getElementById("app")
+      });
+    </script>
+  </body>
 </html>
