@@ -34,7 +34,8 @@ main =
 
 
 type alias Model =
-    { link : String
+    { key : Nav.Key
+    , link : String
     , donate : String
     , address : String
     , html : String
@@ -42,12 +43,13 @@ type alias Model =
 
 
 init : () -> Url.Url -> Nav.Key -> ( Model, Cmd Msg )
-init _ url _ =
+init _ url key =
     let
         address =
             parseQuery url
     in
-    ( { link = "https://donate.cipherdogs.net/?address="
+    ( { key = key
+      , link = "https://donate.cipherdogs.net/?address="
       , donate = "4A5cX5VRHSmitG2fyZZqJu1hTFR53aKpPD9GjnBi6D3p5qVNA8c3gFxB7Q8E1aJQiHNt2EBjjviUTMNWmX4f4V8RSE3JX9f"
       , address = address
       , html = ""
@@ -72,13 +74,22 @@ update msg model =
         UrlChanged _ ->
             ( model, Cmd.none )
 
-        LinkClicked _ ->
-            ( model, Cmd.none )
+        LinkClicked urlRequest ->
+            case urlRequest of
+                Browser.Internal url ->
+                    let
+                        address =
+                            parseQuery url
+                    in
+                    ( { model | address = address }, Nav.pushUrl model.key (Url.toString url) )
+
+                Browser.External href ->
+                    ( model, Nav.load href )
 
         SetAddress address ->
             ( { model
                 | html =
-                    "<a target='_blank' href='"
+                    "<a href='"
                         ++ model.link
                         ++ address
                         ++ "'><img height='100' width='100' src='https://donate.cipherdogs.net/img/monero.png'></a>"
@@ -101,8 +112,8 @@ textHtml t =
             []
 
 
-generateLink : String -> String -> Html Msg
-generateLink html address =
+generateLink : String -> Html Msg
+generateLink html =
     section [ class "generate" ]
         [ h3 [] [ text "Generate Monero Donate Link" ]
         , p [] [ text "Address" ]
@@ -149,7 +160,7 @@ viewQRcode address =
             [ text "Address"
             , div [] [ text address ]
             ]
-        , a [ class "button", href ("monero:" ++ address), target "_blank" ] [ text "Donate" ]
+        , a [ class "button", href ("monero:" ++ address) ] [ text "Donate" ]
         ]
 
 
@@ -158,15 +169,16 @@ view model =
     { title = "Monero Donate"
     , body =
         [ main_ []
-            [ img [ class "logo", src "img/monero-logo.png" ] []
+            [ a [ href "/" ]
+                [ img [ class "logo", src "img/monero-logo.png" ] [] ]
             , if String.isEmpty model.address then
-                generateLink model.html model.address
+                generateLink model.html
 
               else
                 viewQRcode model.address
             , p [ class "footer" ]
                 [ text "Add to your site a link to donate Monero"
-                , a [ href (model.link ++ model.donate), target "_blank" ] [ text "Donate" ]
+                , a [ href (model.link ++ model.donate) ] [ text "Donate" ]
                 ]
             ]
         ]
